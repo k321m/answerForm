@@ -1,0 +1,304 @@
+body {
+  background-color: #808080;
+  user-select: none;
+}
+.wrappe {
+  display: flex;
+}
+div.col1 {
+  width: 60%;
+}
+img.image {
+  position: absolute;
+  left: 19%;
+  top: 50%;
+  transform: translate(-20%, -50%);
+}
+
+div.col2 {
+  width: 40%;
+}
+div.evaluation {
+  display: flex;
+}
+div.card {
+  position: absolute;
+  right: 12%;
+  top: 50%;
+  transform: translate(20%, -50%);
+  /* background-color: #C0C0C0; */
+  background-color: #dcdcdc;
+  padding: 1rem 3rem 1.6rem 3rem;
+}
+
+div.card-finish {
+  position: absolute;
+  width: 30%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #C0C0C0; */
+  background-color: #dcdcdc;
+  padding: 5rem 5rem 3.5rem 5rem;
+  text-align: center;
+}
+
+div.card-start {
+  position: absolute;
+  width: 40%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #C0C0C0; */
+  background-color: #dcdcdc;
+  padding: 4rem 4rem 4rem 4rem;
+  text-align: center;
+}
+
+div.evaluationL {
+  padding-right: 3rem;
+}
+div.evaluationR {
+  padding-left: 3rem;
+}
+
+div.evaluationL div#word {
+  padding: 0.1rem 0rem;
+}
+
+div.evaluationR div#word {
+  padding: 0.1rem 0rem;
+}
+p#word {
+  padding: 0rem 0rem;
+  margin: 0.25rem 0rem;
+}
+div.general {
+  padding-top: 1.4rem;
+  text-align: center;
+}
+
+p {
+  margin: 0rem;
+}
+
+p#ques {
+  padding: 1rem 0rem 2rem 0rem;
+  font-size: 20px;
+}
+
+h1#counter {
+  margin: 0;
+  padding: 1rem 0rem;
+}
+
+#word span {
+  font-size: large;
+  font-weight: bold;
+}
+.btn button {
+  width: 20%;
+  padding: 0.5rem 0.3rem;
+  font-size: larger;
+  cursor: pointer;
+  margin: 0rem;
+}
+.card-finish button {
+  padding: 1.1rem 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 1.1rem;
+}
+
+.card-start button {
+  padding: 1.1rem 2.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+button#back {
+  margin: 0rem 0.5rem;
+}
+div.btn {
+  text-align: right;
+  padding-top: 2rem;
+}
+
+input[type="radio"] {
+  display: none;
+}
+/* radiobtn sample1 */
+label {
+  display: inline-block;
+  cursor: pointer;
+  width: 60px;
+  margin: 0;
+  padding: 12px 16px;
+  background: #a8a8a8;
+  color: #6a6a6a;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1;
+  transition: 0.2s;
+  font-weight: 600;
+}
+label:first-of-type {
+  border-right: transparent;
+  border-radius: 3px 0 0 3px;
+}
+label:last-of-type {
+  border-radius: 0 3px 3px 0;
+  border-left: transparent;
+}
+
+input:checked + label {
+  color: #fff;
+  background-color: #0067c0;
+  font-weight: 600;
+}
+
+/* radiobtn sample2 なし*/
+/* 
+label {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    margin: 0;
+    padding: 10px;
+    background: #6b6b6b;
+    color: #3d3d3d;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1;
+    transition: .2s;
+    border: solid;
+    border-color: #3d3d3d;
+}
+label:first-of-type{
+	border-right: transparent;
+    border-radius: 3px 0 0 3px;
+}
+label:last-of-type{
+	border-radius: 0 3px 3px 0;
+    border-left: transparent;
+}
+p:nth-child(even) label{
+    border-color: #515151;
+    background: #909090;
+    color: #616161;
+}
+p:nth-child(even) span{
+    color: #515151;
+}
+
+input:checked + label {
+    color: #fff;
+    background-color: #0067C0;
+    font-weight: 600;
+    
+} */
+
+/* radiobtn sample3 */
+/* 
+label {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    margin: 0;
+    padding: 10px;
+    background: #909090;
+    color: #616161;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1;
+    transition: .2s;
+}
+label:first-of-type{
+	border-right: transparent;
+    border-radius: 3px 0 0 3px;
+}
+label:last-of-type{
+	border-radius: 0 3px 3px 0;
+    border-left: transparent;
+}
+
+input:checked + label {
+    color: #fff;
+    background-color: #0067C0;
+    font-weight: 600;
+}
+
+.evaluation div#word {
+    padding: 0.2rem 0.1rem;
+    color: #2c2c2f;
+    background: #cdcdcd;
+}
+
+.evaluationL div#word:nth-child(even){
+    color: #2c2c2f;
+    background: #dfdede;
+}
+.evaluationR div#word:nth-child(odd){
+    color: #2c2c2f;
+    background: #dfdede;
+} */
+
+/* radiobtn sample4 */
+/* label {
+    display: inline-block;
+    cursor: pointer;
+    width: 40px;
+    margin: 0;
+    padding: 10px;
+    background: #909090;
+    color: #616161;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1;
+    transition: .2s;
+    text-shadow: 
+    0.2px 0.2px 0, 
+    0.2px -0.2px 0px,
+    -0.2px 0.2px 0,
+    -0.2px -0.2px 0px,
+    0.2px 0px 0px,
+    0px 0.2px 0px,
+    -0.2px 0px 0px,
+    0px -0.2px 0px;
+}
+label:first-of-type{
+	border-right: transparent;
+    border-radius: 3px 0 0 3px;
+}
+label:last-of-type{
+	border-radius: 0 3px 3px 0;
+    border-left: transparent;
+}
+
+input:checked + label {
+    color: #fff;
+    background-color: #0067C0;
+    font-weight: 600;
+} */
+
+/* 
+label {
+    display: inline-block;
+    width: 60px;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: #9eaab6;
+    box-shadow: 0px 2px 2px 1px #dcdcdc;
+    border-bottom: solid 5px #778899;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+
+input:checked + label {
+    box-shadow: none;
+    position:relative;
+    border-bottom:none;
+    top:7px;
+} */
