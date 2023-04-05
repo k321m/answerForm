@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/stylesheets/index.css" />
   </head>
+
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="wrappe">
+      <div class="col1">
+        <img class="image" src="" />
+      </div>
+      <div class="col2">
+        <div class="card">
+          <h1 id="counter"></h1>
+          <p id="ques">
+            あてはまる場合は「はい」，あてはまらない場合は「いいえ」を選択してください．
+          </p>
+          <div class="evaluation">
+            <div class="evaluationL"></div>
+            <div class="evaluationR"></div>
+          </div>
+          <div class="general"></div>
+          <div class="btn">
+            <button id="back" onclick="onClickedBack()">戻る</button>
+            <button onclick="onClickedNext()">次へ</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
