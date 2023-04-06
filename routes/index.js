@@ -27,13 +27,21 @@ router.get("/", function (req, res, next) {
 /* View answer form */
 router.get("/form", async function (req, res, next) {
   let id = req.query.id;
-  let imgName = "./img/" + imageJsonData[id];
+  let imgName = "/images/" + imageJsonData[id];
   let evaluationKey = Object.keys(evaluationJsonData[id]);
   res.render("form", {
     title: "answer form",
+    id: id,
     img: imgName,
     evaluation: evaluationKey,
   });
+});
+
+router.post("/form", async function (req, res, next) {
+  let id = req.query.id;
+  var intId = parseInt(id, 10);
+  res.redirect("/form?id=" + (intId + 1));
+  console.log(req.body);
 });
 
 module.exports = router;

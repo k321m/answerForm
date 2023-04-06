@@ -8,7 +8,7 @@
   <body>
     <div class="wrappe">
       <div class="col1">
-        <img class="image" src="" />
+        <img class="image" src="<%= img %>" />
       </div>
       <div class="col2">
         <div class="card">
@@ -16,13 +16,64 @@
           <p id="ques">
             あてはまる場合は「はい」，あてはまらない場合は「いいえ」を選択してください．
           </p>
-          <div class="evaluation">
-            <div class="evaluationL">
-              <%= for(var i = 0; i < 11; i++){%>
+          <form method="post" action="/form?id=<%= id %>">
+            <div class="evaluation">
+              <div class="evaluationL">
+                <% for(var i = 0; i < 11; i++){%>
+                <div id="word">
+                  <p id="word">
+                    <span id="<%= evaluation[i] %>"
+                      ><%= evaluation[i].padEnd(7, "　") %></span
+                    >
+                    <input
+                      type="radio"
+                      name="<%= evaluation[i] %>"
+                      value="1"
+                      id="yes_<%= i %>"
+                    />
+                    <label for="yes_<%= i %>">はい</label>
+                    <input
+                      type="radio"
+                      name="<%= evaluation[i] %>"
+                      value="0"
+                      id="no_<%= i %>"
+                    />
+                    <label for="no_<%= i %>">いいえ</label>
+                  </p>
+                </div>
+                <% } %>
+              </div>
+              <div class="evaluationR">
+                <% for(var i = 11; i < evaluation.length - 1; i++){%>
+                <div id="word">
+                  <p id="word">
+                    <span id="<%= evaluation[i] %>"
+                      ><%= evaluation[i].padEnd(7, "　") %></span
+                    >
+                    <input
+                      type="radio"
+                      name="<%= evaluation[i] %>"
+                      value="1"
+                      id="yes_<%= i %>"
+                    />
+                    <label for="yes_<%= i %>">はい</label>
+                    <input
+                      type="radio"
+                      name="<%= evaluation[i] %>"
+                      value="0"
+                      id="no_<%= i %>"
+                    />
+                    <label for="no_<%= i %>">いいえ</label>
+                  </p>
+                </div>
+                <% } %>
+              </div>
+            </div>
+            <div class="general">
               <div id="word">
                 <p id="word">
-                  <span id="<%= evaluation[i] %>"
-                    ><%= evaluation[i].padEnd(7, "　") %></span
+                  <span id="<%= evaluation[evaluation.length -1] %>"
+                    ><%= evaluation[i].padEnd(18, "　") %></span
                   >
                   <input
                     type="radio"
@@ -40,61 +91,12 @@
                   <label for="no_<%= i %>">いいえ</label>
                 </p>
               </div>
-              <% } %>
             </div>
-            <div class="evaluationR">
-              <%= for(var i = 11; i < evaluation.length - 1; i++){%>
-              <div id="word">
-                <p id="word">
-                  <span id="<%= evaluation[i] %>"
-                    ><%= evaluation[i].padEnd(7, "　") %></span
-                  >
-                  <input
-                    type="radio"
-                    name="<%= evaluation[i] %>"
-                    value="1"
-                    id="yes_<%= i %>"
-                  />
-                  <label for="yes_<%= i %>">はい</label>
-                  <input
-                    type="radio"
-                    name="<%= evaluation[i] %>"
-                    value="0"
-                    id="no_<%= i %>"
-                  />
-                  <label for="no_<%= i %>">いいえ</label>
-                </p>
-              </div>
-              <% } %>
+            <div class="btn">
+              <button id="back" onclick="onClickedBack()">戻る</button>
+              <button type="submit">次へ</button>
             </div>
-          </div>
-          <div class="general">
-            <div id="word">
-              <p id="word">
-                <span id="<%= evaluation[evaluation.length -1] %>"
-                  ><%= evaluation[i].padEnd(18, "　") %></span
-                >
-                <input
-                  type="radio"
-                  name="<%= evaluation[i] %>"
-                  value="1"
-                  id="yes_<%= i %>"
-                />
-                <label for="yes_<%= i %>">はい</label>
-                <input
-                  type="radio"
-                  name="<%= evaluation[i] %>"
-                  value="0"
-                  id="no_<%= i %>"
-                />
-                <label for="no_<%= i %>">いいえ</label>
-              </p>
-            </div>
-          </div>
-          <div class="btn">
-            <button id="back" onclick="onClickedBack()">戻る</button>
-            <button onclick="onClickedNext()">次へ</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
