@@ -45,7 +45,6 @@ router.post("/form", async function (req, res, next) {
   var intId = parseInt(id, 10);
   if (intId != -1) {
     console.log(req.body);
-    console.log(Object.keys(req.body));
     var keyStr = "";
     var values = "";
     for (key in req.body) {
@@ -55,7 +54,7 @@ router.post("/form", async function (req, res, next) {
     let sql =
       "insert into experiment1 (participant_id, img_num, " +
       keyStr.slice(0, -1) +
-      ") values(1," +
+      ") values(3," +
       id +
       "," +
       values.slice(0, -1) +
