@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/stylesheets/index.css" />
   </head>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script>
+    function doPreSubmit(evaluation) {
+      evaluation = evaluation.split(",");
+      var isUndefinedExist = false;
+      for (var i = 0; i < evaluation.length; i++) {
+        $("#" + evaluation[i]).css("color", "black");
+        var value = $('input[name="' + evaluation[i] + '"]:checked').val();
+        if (typeof value === "undefined") {
+          $("#" + evaluation[i]).css("color", "red");
+          isUndefinedExist = true;
+        }
+      }
+      if (isUndefinedExist) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
 
   <body>
     <div class="wrappe">
@@ -16,7 +37,7 @@
           <p id="ques">
             あてはまる場合は「はい」，あてはまらない場合は「いいえ」を選択してください．
           </p>
-          <form method="post" action="/form?id=<%= id %>">
+          <form method="post" action="/form?id=<%= id %>" onsubmit=";">
             <div class="evaluation">
               <div class="evaluationL">
                 <% for(var i = 0; i < 11; i++){%>
@@ -93,8 +114,13 @@
               </div>
             </div>
             <div class="btn">
-              <button id="back" onclick="onClickedBack()">戻る</button>
-              <button type="submit">次へ</button>
+              <button type="button" onclick="history.back();">戻る</button>
+              <button
+                type="submit"
+                onclick="return doPreSubmit('<%=evaluation %>')"
+              >
+                次へ
+              </button>
             </div>
           </form>
         </div>
