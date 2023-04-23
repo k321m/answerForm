@@ -33,7 +33,9 @@
       </div>
       <div class="col2">
         <div class="card">
-          <h1 id="counter"></h1>
+          <h1 id="counter">
+            <%= String(parseInt(id) + 1).padStart(3, "0") %> / 105
+          </h1>
           <p id="ques">
             あてはまる場合は「はい」，あてはまらない場合は「いいえ」を選択してください．
           </p>
