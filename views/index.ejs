@@ -2,13 +2,25 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css"
+    />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <form method="post" action="/form?id=-1">
-      <input type="submit" class="btn btn-primary" />
-    </form>
+    <div class="container">
+      <h1><%= title %></h1>
+      <p>Welcome to <%= title %></p>
+      <form method="post" action="/">
+        <input
+          type="text"
+          class="form-control"
+          id="participantID"
+          name="participantID"
+          placeholder="participantID"
+        />
+        <input type="submit" class="btn btn-primary" />
+      </form>
+    </div>
   </body>
 </html>
