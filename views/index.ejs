@@ -7,20 +7,44 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css"
     />
   </head>
+  <style>
+    body {
+      background-color: #bebebe;
+      user-select: none;
+    }
+  </style>
   <body>
     <div class="container">
-      <h1><%= title %></h1>
-      <p>Welcome to <%= title %></p>
-      <form method="post" action="/">
-        <input
-          type="text"
-          class="form-control"
-          id="participantID"
-          name="participantID"
-          placeholder="participantID"
-        />
-        <input type="submit" class="btn btn-primary" />
-      </form>
+      <div class="row mt-5">
+        <div class="col m-5">
+          <h1><%= title %></h1>
+          <p>Welcome to <%= title %></p>
+          <form method="post" action="/">
+            <input
+              type="text"
+              class="form-control w-10"
+              id="participantID"
+              name="participantID"
+              placeholder="participantID"
+            />
+            <input type="submit" class="btn btn-primary mt-2" />
+          </form>
+        </div>
+        <div class="col m-5">
+          <h1>DB書き出し</h1>
+          <p>書き出したいデータの被験者番号を入力してください．</p>
+          <form method="post" action="/export">
+            <input
+              type="text"
+              class="form-control w-10"
+              id="participantID"
+              name="participantID"
+              placeholder="participantID"
+            />
+            <input type="submit" class="btn btn-primary mt-2" />
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

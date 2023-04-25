@@ -34,6 +34,19 @@ router.post("/", function (req, res, next) {
   res.redirect("/form?id=0");
 });
 
+router.post("/export", async function (req, res, next) {
+  let participantID = req.body.participantID;
+  let sql = "select * from experiment1 where participant_id=" + participantID;
+  let record = await dball.getAllRows(sql);
+
+  fs.writeFile(
+    String(parseInt(participantID)).padStart(2, "0") + ".json",
+    JSON.stringify(record),
+    (err) => err && console.error(err)
+  );
+  res.redirect("/");
+});
+
 /* View answer form */
 router.get("/form", async function (req, res, next) {
   if (req.session.participantID == undefined) {
@@ -41,6 +54,10 @@ router.get("/form", async function (req, res, next) {
     return;
   }
   let id = req.query.id;
+  if (req.query.id == 105) {
+    res.render("finish");
+    return;
+  }
   let evaluationKey = Object.keys(req.session.evaluationJsonData[id]);
   let imgName = "/images/" + req.session.imageJsonData[id];
   res.render("form", {
@@ -85,11 +102,13 @@ router.post("/form", async function (req, res, next) {
       values += req.body[key] + ",";
     }
     sql =
-      "insert into experiment1 (participant_id, img, " +
+      "insert into experiment1 (participant_id, id, img, " +
       keyStr.slice(0, -1) +
       ") values(" +
       participantID +
-      ", '" +
+      "," +
+      (parseInt(id) + 1) +
+      ",'" +
       imgName +
       "'," +
       values.slice(0, -1) +
