@@ -9,10 +9,8 @@ var dbdo = require("../db/exec.js");
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("index", {
-    title: "主観評価実験",
-    participantID: req.session.participantID,
-    evaluationJsonData: req.session.evaluationJsonData,
-    imageJsonData: req.session.imageJsonData,
+    title: "色付きマスクの主観評価実験",
+    message: "実験する被験者番号を入力してください。",
   });
 });
 
@@ -34,13 +32,20 @@ router.post("/", function (req, res, next) {
   res.redirect("/form?id=0");
 });
 
+router.get("/export", async function (req, res, next) {
+  res.render("export", {
+    title: "データ書き出し",
+    message: "書き出したいデータの被験者番号を入力してください．",
+  });
+});
+
 router.post("/export", async function (req, res, next) {
   let participantID = req.body.participantID;
   let sql = "select * from experiment1 where participant_id=" + participantID;
   let record = await dball.getAllRows(sql);
 
   fs.writeFile(
-    String(parseInt(participantID)).padStart(2, "0") + ".json",
+    "jsonData/" + String(parseInt(participantID)).padStart(2, "0") + ".json",
     JSON.stringify(record),
     (err) => err && console.error(err)
   );
