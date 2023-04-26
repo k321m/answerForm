@@ -49,7 +49,11 @@ router.post("/export", async function (req, res, next) {
     JSON.stringify(record),
     (err) => err && console.error(err)
   );
-  res.redirect("/");
+  res.redirect("/export");
+});
+
+router.get("/start", async function (req, res, next) {
+  res.render("start");
 });
 
 /* View answer form */
@@ -58,22 +62,34 @@ router.get("/form", async function (req, res, next) {
     res.redirect("/");
     return;
   }
-  let id = req.query.id;
-  if (req.query.id == 105) {
+  if (req.query.id == 0) {
+    sampleData = JSON.parse(
+      fs.readFileSync("./json/evaluationJson/sample.json", "utf8")
+    );
+    res.render("sample", {
+      img: "/images/face3/face3_31_w0.png",
+      evaluation: Object.keys(sampleData[0]),
+    });
+    return;
+  }
+  if (req.query.id > 105) {
     res.render("finish");
     return;
   }
+  let id = parseInt(req.query.id) - 1;
   let evaluationKey = Object.keys(req.session.evaluationJsonData[id]);
   let imgName = "/images/" + req.session.imageJsonData[id];
   res.render("form", {
-    id: id,
+    id: id + 1,
     img: imgName,
     evaluation: evaluationKey,
   });
 });
 
 router.post("/form", async function (req, res, next) {
-  let id = req.query.id;
+  console.log("req.query.id:" + req.query.id);
+  let id = parseInt(req.query.id) - 1;
+  console.log("id:" + id);
   let participantID = req.session.participantID;
   let imgName = req.session.imageJsonData[id];
   imgName = imgName.substring(imgName.indexOf("/") + 1, imgName.length - 4);
@@ -121,7 +137,7 @@ router.post("/form", async function (req, res, next) {
   }
   await dbdo.exec(sql);
   console.log(sql);
-  res.redirect("/form?id=" + (parseInt(id) + 1));
+  res.redirect("/form?id=" + (parseInt(req.query.id) + 1));
 });
 
 module.exports = router;
