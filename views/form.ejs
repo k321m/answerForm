@@ -33,21 +33,31 @@
       </div>
       <div class="col2">
         <div class="card">
-          <h1 id="counter">
-            <%= String(parseInt(id) + 1).padStart(3, "0") %> / 105
-          </h1>
+          <h1 id="counter"><%= String(id).padStart(3, "0") %> / 105</h1>
           <p id="ques">
             あてはまる場合は「はい」、あてはまらない場合は「いいえ」を選択してください。
           </p>
-          <form method="post" action="/form?id=<%= id %>" onsubmit=";">
+          <form method="post" action="/form?id=<%= id %>">
             <div class="evaluation">
               <div class="evaluationL">
                 <% for(var i = 0; i < 11; i++){%>
                 <div id="word">
                   <p id="word">
                     <span id="<%= evaluation[i] %>"
-                      ><%= evaluation[i].padEnd(7, "　") %></span>
-                    <input type="radio" name="<%= evaluation[i] %>" value="1" id="yes_<%= i %>"/><label for="yes_<%= i %>">はい</label><input type="radio" name="<%= evaluation[i] %>" value="0" id="no_<%= i %>"/><label for="no_<%= i %>">いいえ</label>
+                      ><%= evaluation[i].padEnd(7, "　") %></span
+                    >
+                    <input
+                      type="radio"
+                      name="<%= evaluation[i] %>"
+                      value="1"
+                      id="yes_<%= i %>"
+                    /><label for="yes_<%= i %>">はい</label
+                    ><input
+                      type="radio"
+                      name="<%= evaluation[i] %>"
+                      value="0"
+                      id="no_<%= i %>"
+                    /><label for="no_<%= i %>">いいえ</label>
                   </p>
                 </div>
                 <% } %>
@@ -59,7 +69,18 @@
                     <span id="<%= evaluation[i] %>"
                       ><%= evaluation[i].padEnd(7, "　") %></span
                     >
-                    <input type="radio" name="<%= evaluation[i] %>" value="1" id="yes_<%= i %>"/><label for="yes_<%= i %>">はい</label><input type="radio" name="<%= evaluation[i] %>" value="0" id="no_<%= i %>"/><label for="no_<%= i %>">いいえ</label>
+                    <input
+                      type="radio"
+                      name="<%= evaluation[i] %>"
+                      value="1"
+                      id="yes_<%= i %>"
+                    /><label for="yes_<%= i %>">はい</label
+                    ><input
+                      type="radio"
+                      name="<%= evaluation[i] %>"
+                      value="0"
+                      id="no_<%= i %>"
+                    /><label for="no_<%= i %>">いいえ</label>
                   </p>
                 </div>
                 <% } %>
@@ -71,7 +92,18 @@
                   <span id="<%= evaluation[i] %>"
                     ><%= evaluation[i].padEnd(18, "　") %></span
                   >
-                  <input type="radio" name="<%= evaluation[i] %>" value="1" id="yes_<%= i %>"/><label for="yes_<%= i %>">はい</label><input type="radio" name="<%= evaluation[i] %>" value="0" id="no_<%= i %>"/><label for="no_<%= i %>">いいえ</label>
+                  <input
+                    type="radio"
+                    name="<%= evaluation[i] %>"
+                    value="1"
+                    id="yes_<%= i %>"
+                  /><label for="yes_<%= i %>">はい</label
+                  ><input
+                    type="radio"
+                    name="<%= evaluation[i] %>"
+                    value="0"
+                    id="no_<%= i %>"
+                  /><label for="no_<%= i %>">いいえ</label>
                 </p>
               </div>
             </div>

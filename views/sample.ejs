@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+  </head>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script>
+    function doPreSubmit(evaluation) {
+      evaluation = evaluation.split(",");
+      var isUndefinedExist = false;
+      for (var i = 0; i < evaluation.length; i++) {
+        $("#" + evaluation[i]).css("color", "black");
+        var value = $('input[name="' + evaluation[i] + '"]:checked').val();
+        if (typeof value === "undefined") {
+          $("#" + evaluation[i]).css("color", "red");
+          isUndefinedExist = true;
+        }
+      }
+      if (isUndefinedExist) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+    $("html").keyup(function (e) {
+      if (e.keyCode == 83) {
+        window.location = "/start";
+      }
+    });
+  </script>
+
+  <body>
+    <div class="wrappe">
+      <div class="col1">
+        <img class="image" src="<%= img %>" />
+      </div>
+      <div class="col2">
+        <div class="card">
+          <h1 id="counter">000 / 105</h1>
+          <p id="ques">
+            あてはまる場合は「はい」、あてはまらない場合は「いいえ」を選択してください。
+          </p>
+          <div class="evaluation">
+            <div class="evaluationL">
+              <% for(var i = 0; i < 11; i++){%>
+              <div id="word">
+                <p id="word">
+                  <span id="<%= evaluation[i] %>"
+                    ><%= evaluation[i].padEnd(7, "　") %></span
+                  >
+                  <input
+                    type="radio"
+                    name="<%= evaluation[i] %>"
+                    value="1"
+                    id="yes_<%= i %>"
+                  /><label for="yes_<%= i %>">はい</label
+                  ><input
+                    type="radio"
+                    name="<%= evaluation[i] %>"
+                    value="0"
+                    id="no_<%= i %>"
+                  /><label for="no_<%= i %>">いいえ</label>
+                </p>
+              </div>
+              <% } %>
+            </div>
+            <div class="evaluationR">
+              <% for(var i = 11; i < evaluation.length - 1; i++){%>
+              <div id="word">
+                <p id="word">
+                  <span id="<%= evaluation[i] %>"
+                    ><%= evaluation[i].padEnd(7, "　") %></span
+                  >
+                  <input
+                    type="radio"
+                    name="<%= evaluation[i] %>"
+                    value="1"
+                    id="yes_<%= i %>"
+                  /><label for="yes_<%= i %>">はい</label
+                  ><input
+                    type="radio"
+                    name="<%= evaluation[i] %>"
+                    value="0"
+                    id="no_<%= i %>"
+                  /><label for="no_<%= i %>">いいえ</label>
+                </p>
+              </div>
+              <% } %>
+            </div>
+          </div>
+          <div class="general">
+            <div id="word">
+              <p id="word">
+                <span id="<%= evaluation[i] %>"
+                  ><%= evaluation[i].padEnd(18, "　") %></span
+                >
+                <input
+                  type="radio"
+                  name="<%= evaluation[i] %>"
+                  value="1"
+                  id="yes_<%= i %>"
+                /><label for="yes_<%= i %>">はい</label
+                ><input
+                  type="radio"
+                  name="<%= evaluation[i] %>"
+                  value="0"
+                  id="no_<%= i %>"
+                /><label for="no_<%= i %>">いいえ</label>
+              </p>
+            </div>
+          </div>
+          <div class="btn">
+            <button type="button">戻る</button>
+            <button type="submit" onclick="doPreSubmit('<%=evaluation %>')">
+              次へ
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
