@@ -8,6 +8,10 @@ var dbdo = require("../db/exec.js");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
+  if (req.session.login == undefined) {
+    res.redirect("/users/login");
+    return;
+  }
   res.render("index", {
     title: "色付きマスクの主観評価実験",
     message: "実験する被験者番号を入力してください。",
@@ -33,6 +37,10 @@ router.post("/", function (req, res, next) {
 });
 
 router.get("/export", async function (req, res, next) {
+  if (req.session.login == undefined) {
+    res.redirect("/users/login");
+    return;
+  }
   res.render("export", {
     title: "データ書き出し",
     message: "書き出したいデータの被験者番号を入力してください．",
@@ -53,11 +61,23 @@ router.post("/export", async function (req, res, next) {
 });
 
 router.get("/start", async function (req, res, next) {
+  if (req.session.login == undefined) {
+    res.redirect("/users/login");
+    return;
+  }
+  if (req.session.participantID == undefined) {
+    res.redirect("/");
+    return;
+  }
   res.render("start");
 });
 
 /* View answer form */
 router.get("/form", async function (req, res, next) {
+  if (req.session.login == undefined) {
+    res.redirect("/users/login");
+    return;
+  }
   if (req.session.participantID == undefined) {
     res.redirect("/");
     return;
