@@ -52,12 +52,15 @@ router.post("/export", async function (req, res, next) {
   let sql = "select * from experiment1 where participant_id=" + participantID;
   let record = await dball.getAllRows(sql);
 
-  fs.writeFile(
-    "jsonData/" + String(parseInt(participantID)).padStart(2, "0") + ".json",
+  let fileName =
+    "jsonData/" + String(parseInt(participantID)).padStart(2, "0") + ".json";
+
+  fs.writeFileSync(
+    fileName,
     JSON.stringify(record),
     (err) => err && console.error(err)
   );
-  res.redirect("/export");
+  res.download(fileName);
 });
 
 router.get("/start", async function (req, res, next) {
