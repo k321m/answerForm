@@ -21,7 +21,6 @@ router.post("/login", async function (req, res, next) {
     "' and password='" +
     password +
     "'";
-  console.log(sql);
   let record = await dbget.getRow(sql);
   if (record != undefined) {
     req.session.login = record;

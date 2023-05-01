@@ -110,11 +110,8 @@ router.get("/form", async function (req, res, next) {
 });
 
 router.post("/form", async function (req, res, next) {
-  console.log("req.query.id:" + req.query.id);
   let id = parseInt(req.query.id) - 1;
-  console.log("id:" + id);
   let participantID = req.session.participantID;
-  console.log("imageJson:" + req.session.imageJsonData);
   let imgName = req.session.imageJsonData[id];
   imgName = imgName.substring(imgName.indexOf("/") + 1, imgName.length - 4);
 
@@ -160,7 +157,6 @@ router.post("/form", async function (req, res, next) {
       ")";
   }
   await dbdo.exec(sql);
-  console.log(sql);
   res.redirect("/form?id=" + (parseInt(req.query.id) + 1));
 });
 
